@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
+import compare from "../utils/Sort";
 import ETable from '../components/ETable';
 
 class Directory extends Component {
@@ -16,8 +17,13 @@ class Directory extends Component {
   loadEmployees = () => {
     API.getEmployees()
       .then(res => {
+        let emps = res.data.results;
+        // emps.sort((a, b) => a.name.last - b.name.last);
+        // emps.sort(sort_by('name.last', false, (a) => (a) =>  a.toUpperCase()));
+        emps.sort(compare);
+        console.log(emps);
         this.setState({
-          employees: res.data.results
+          employees: emps
         });
       })
       .catch(err => console.log(err));
@@ -30,8 +36,24 @@ class Directory extends Component {
     const newState = { ...this.state };
     newState.asc = !newState.asc;
 
+    newState.employees.reverse();
+
     // Replace our component's state with newState
     this.setState(newState);
+  };
+
+  handleFormSubmit = event => {
+    /*
+    event.preventDefault();
+    API.getDogsOfBreed(this.state.search)
+      .then(res => {
+        if (res.data.status === "error") {
+          throw new Error(res.data.message);
+        }
+        this.setState({ results: res.data.message, error: "" });
+      })
+      .catch(err => this.setState({ error: err.message }));
+    */
   };
 
   render() {

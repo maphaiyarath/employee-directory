@@ -8,12 +8,14 @@ function ETable(props) {
     <Table hover>
       <thead>
         <tr>
-          <th>Picture</th>
-          <th>First Name</th>
-          <th>Last Name <SortBtn asc={ props.asc } onClick={ props.handleBtnClick } data-value="sort" /></th>
-          <th>Location (City, State)</th>
-          <th>Email</th>
-          <th>Phone #</th>
+          <th className="align-middle">Picture</th>
+          <th className="align-middle">First Name</th>
+          <th className="align-middle">
+            Last Name <SortBtn asc={ props.asc } onClick={ props.handleBtnClick } data-value="sort" />
+          </th>
+          <th className="align-middle">Location (City, State)</th>
+          <th className="align-middle">Email</th>
+          <th className="align-middle">Phone #</th>
         </tr>
       </thead>
       <tbody>

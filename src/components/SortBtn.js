@@ -4,7 +4,6 @@ import { faSortDown, faSortUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function SortBtn(props) {
-    console.log(props);
   return (
     <Button
         onClick={ props.onClick }
