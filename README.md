@@ -3,7 +3,7 @@
 
 ![Employee Directory App](/TODO)
 
-You can demo the app [here](https://maphaiyarath-employee-directory.herokuapp.com/).
+You can demo the app [here](https://maphaiyarath-employeedirectory.herokuapp.com/).
 
 ## Table of Contents
 * [Description](#description)
@@ -14,31 +14,28 @@ You can demo the app [here](https://maphaiyarath-employee-directory.herokuapp.co
 * [Contributing](#contributing)
 
 ## Description
-For this assignment, you'll create a employee directory with React. This assignment will require you to break up your application's UI into components, manage component state, and respond to user events.
+With this Employee Directory, managers and employees can:
+- View data about other employees, such as name, location, email, and phone number
+- Sort the table by the employee's last name
+- Filter the users by the employee's first or last name
 
-As a user, I want to be able to view my entire employee directory at once so that I have quick access to their information.
-
-An employee or manager would benefit greatly from being able to view non-sensitive data about other employees. It would be particularly helpful to be able to filter employees by name.
-
-Given a table of random users generated from the Random User API, when the user loads the page, a table of employees should render.
-The user should be able to:
-- Sort the table by at least one category
-- Filter the users by at least one property.
+Using React, the application manages component state, separates the UI into components, and responds to user events for quick access to employee information.
 
 ## Installation
-Use the following command for installation:
+Use the following command for installation in the root and /src folders:
 ```bash
 npm install
 ```
 
 ## Usage
-The application will be invoked by running:
+The application will be invoked by running from /employee-directory/src:
 ```bash
 npm start
 ```
 
 ## Credits
 * [React](https://reactjs.org/)
+* [Random User API](https://randomuser.me/)
 
 ## License
 This project is licensed under the MIT license.

@@ -1,66 +1,42 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import API from "../utils/API";
 import compare from "../utils/Sort";
+import filterByValue from "../utils/FilterByVal";
 import ETable from '../components/ETable';
+import Filter from '../components/Filter';
 
-class Directory extends Component {
-  state = {
-    employees: [],
-    asc: true
-  };
+function Directory() {
+  const [ employees, setEmployees ] = useState([]);
+  const [ filteredList, setFilteredList ] = useState([]);
+  const [ asc, setAsc ] = useState(true);
 
-  // When the component mounts, load the employees to be displayed
-  componentDidMount() {
-    this.loadEmployees();
-  }
-
-  loadEmployees = () => {
+  useEffect(() => {
     API.getEmployees()
       .then(res => {
         let emps = res.data.results;
-        // emps.sort((a, b) => a.name.last - b.name.last);
-        // emps.sort(sort_by('name.last', false, (a) => (a) =>  a.toUpperCase()));
         emps.sort(compare);
-        console.log(emps);
-        this.setState({
-          employees: emps
-        });
+        setEmployees(emps);
+        setFilteredList(emps);
       })
       .catch(err => console.log(err));
-  };
+  }, []);
 
   // sort button - asc or desc
-  handleBtnClick = event => {
-    // Clone this.state to the newState object
-    // We'll modify this object and use it to set our component's state
-    const newState = { ...this.state };
-    newState.asc = !newState.asc;
-
-    newState.employees.reverse();
-
-    // Replace our component's state with newState
-    this.setState(newState);
+  const handleBtnClick = event => {
+    filteredList.reverse();
+    setAsc(!asc);
   };
 
-  handleFormSubmit = event => {
-    /*
-    event.preventDefault();
-    API.getDogsOfBreed(this.state.search)
-      .then(res => {
-        if (res.data.status === "error") {
-          throw new Error(res.data.message);
-        }
-        this.setState({ results: res.data.message, error: "" });
-      })
-      .catch(err => this.setState({ error: err.message }));
-    */
+  const handleInputChange = event => {
+    setFilteredList(filterByValue(employees, event.target.value));
   };
 
-  render() {
-    return (
-        <ETable employees={ this.state.employees } asc={ this.state.asc } handleBtnClick={ this.handleBtnClick } />
-    );
-  }
+  return (
+    <div className=" row justify-content-center">
+      <Filter handleInputChange={ handleInputChange } />
+      <ETable employees={ filteredList } asc={ asc } handleBtnClick={ handleBtnClick } />
+    </div>
+  );
 }
 
-export default Directory
+export default Directory;
