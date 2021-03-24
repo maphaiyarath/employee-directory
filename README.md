@@ -1,7 +1,7 @@
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/maphaiyarath/employee-directory)
 # React: Employee Directory
 
-![Employee Directory App](/TODO)
+![Employee Directory App](./employee-directory.png)
 
 You can demo the app [here](https://maphaiyarath-employeedirectory.herokuapp.com/).
 
